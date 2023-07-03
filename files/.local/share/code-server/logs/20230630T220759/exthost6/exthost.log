@@ -1,0 +1,28 @@
+[2023-07-01 13:03:21.291] [exthost] [info] Extension host with pid 105132 started
+[2023-07-01 13:03:21.291] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-07-01 13:03:21.298] [exthost] [error] Error: EEXIST: file already exists, open '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock'
+[2023-07-01 13:03:21.299] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2023-07-01 13:03:21.300] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': The lock does not look stale, elapsed: 890 ms, giving up.
+[2023-07-01 13:03:21.301] [exthost] [error] Error: EEXIST: file already exists, open '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock'
+[2023-07-01 13:03:21.301] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2023-07-01 13:03:21.301] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock': The lock does not look stale, elapsed: 856 ms, giving up.
+[2023-07-01 13:03:21.301] [exthost] [error] Error: EEXIST: file already exists, open '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-2/vscode.lock'
+[2023-07-01 13:03:21.302] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-2/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2023-07-01 13:03:21.302] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-2/vscode.lock': The pid 151891 appears to be gone.
+[2023-07-01 13:03:21.303] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-2/vscode.lock': Deleting a stale lock.
+[2023-07-01 13:03:21.308] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-2/vscode.lock': Lock acquired.
+[2023-07-01 13:03:21.423] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-07-01 13:03:21.465] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-07-01 13:03:21.468] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-07-01 13:03:21.519] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-07-01 13:03:21.565] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-07-01 13:03:22.177] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-01 13:03:22.189] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-01 13:03:22.192] [exthost] [info] Eager extensions activated
+[2023-07-01 13:55:27.383] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:typescript'
+[2023-07-01 14:33:36.427] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2023-07-01 14:51:45.654] [exthost] [info] ExtensionService#_doActivateExtension vscode.image-preview, startup: false, activationEvent: 'onCustomEditor:imagePreview.previewEditor'
+[2023-07-01 20:36:03.782] [exthost] [info] ExtensionService#_doActivateExtension vscode.simple-browser, startup: false, activationEvent: 'onOpenExternalUri:https'
+[2023-07-02 03:14:50.426] [exthost] [info] extension host terminating: renderer disconnected for too long (1)
+[2023-07-02 03:14:50.427] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-2/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2023-07-02 03:14:50.440] [exthost] [info] Extension host with pid 105132 exiting with code 0

@@ -1,0 +1,25 @@
+[2023-06-27 14:51:14.675] [exthost] [info] Extension host with pid 187542 started
+[2023-06-27 14:51:14.676] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-06-27 14:51:14.682] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Lock acquired.
+[2023-06-27 14:51:14.722] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-06-27 14:51:14.768] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-06-27 14:51:14.770] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-06-27 14:51:14.920] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-06-27 14:51:14.967] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-06-27 14:51:15.045] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-27 14:51:15.058] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-27 14:51:15.061] [exthost] [info] Eager extensions activated
+[2023-06-27 14:54:10.434] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2023-06-27 14:54:27.460] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:json'
+[2023-06-27 14:54:27.465] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+[2023-06-27 14:54:27.475] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:json'
+[2023-06-27 14:54:27.522] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm, startup: false, activationEvent: 'onLanguage:json'
+[2023-06-27 14:56:37.460] [exthost] [error] [vscode.json-language-features] provider FAILED
+[2023-06-27 14:56:37.461] [exthost] [error] Canceled: Canceled
+	at b.makeCancelError (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/json-language-features/client/dist/node/jsonClientMain.js:1:492175)
+	at b.handleFailedRequest (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/json-language-features/client/dist/node/jsonClientMain.js:1:492026)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/extensions/json-language-features/client/dist/node/jsonClientMain.js:1:503228
+	at async q.provideColors (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:107167)
+[2023-06-27 15:06:32.641] [exthost] [info] extension host terminating: received terminate message from renderer
+[2023-06-27 15:06:32.641] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2023-06-27 15:06:32.654] [exthost] [info] Extension host with pid 187542 exiting with code 0

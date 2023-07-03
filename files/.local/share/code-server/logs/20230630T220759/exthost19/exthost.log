@@ -1,0 +1,14 @@
+[2023-07-03 20:41:35.012] [exthost] [info] Extension host with pid 473500 started
+[2023-07-03 20:41:35.012] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-07-03 20:41:35.013] [exthost] [error] Error: EEXIST: file already exists, open '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock'
+[2023-07-03 20:41:35.014] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2023-07-03 20:41:35.015] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': The lock does not look stale, elapsed: 377 ms, giving up.
+[2023-07-03 20:41:35.021] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock': Lock acquired.
+[2023-07-03 20:41:35.345] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-07-03 20:41:35.393] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-07-03 20:41:35.396] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-07-03 20:41:36.729] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-07-03 20:41:36.777] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-07-03 20:41:37.018] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-03 20:41:37.031] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-03 20:41:37.034] [exthost] [info] Eager extensions activated

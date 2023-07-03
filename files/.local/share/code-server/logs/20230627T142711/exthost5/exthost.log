@@ -1,0 +1,23 @@
+[2023-06-27 14:52:54.748] [exthost] [info] Extension host with pid 188611 started
+[2023-06-27 14:52:54.748] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-06-27 14:52:54.775] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-06-27 14:52:54.779] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-06-27 14:52:54.795] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-06-27 14:52:54.844] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-06-27 14:52:54.945] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-27 14:52:54.958] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-27 14:52:54.961] [exthost] [info] Eager extensions activated
+[2023-06-27 14:53:58.621] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2023-06-27 14:54:25.333] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:json'
+[2023-06-27 14:54:25.341] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+[2023-06-27 14:54:25.353] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:json'
+[2023-06-27 14:54:25.403] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm, startup: false, activationEvent: 'onLanguage:json'
+[2023-06-27 14:55:57.225] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-06-27 14:56:37.459] [exthost] [error] [vscode.json-language-features] provider FAILED
+[2023-06-27 14:56:37.460] [exthost] [error] Canceled: Canceled
+	at b.makeCancelError (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/json-language-features/client/dist/node/jsonClientMain.js:1:492175)
+	at b.handleFailedRequest (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/json-language-features/client/dist/node/jsonClientMain.js:1:492026)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/extensions/json-language-features/client/dist/node/jsonClientMain.js:1:503228
+	at async q.provideColors (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:107167)
+[2023-06-27 15:26:18.199] [exthost] [info] extension host terminating: received terminate message from renderer
+[2023-06-27 15:26:18.211] [exthost] [info] Extension host with pid 188611 exiting with code 0

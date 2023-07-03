@@ -1,0 +1,16 @@
+[2023-07-02 14:43:57.935] [exthost] [info] Extension host with pid 285458 started
+[2023-07-02 14:43:57.939] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-07-02 14:43:57.948] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Lock acquired.
+[2023-07-02 14:43:58.047] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-07-02 14:43:58.090] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-07-02 14:43:58.093] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-07-02 14:43:58.751] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-07-02 14:43:58.801] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-07-02 14:43:58.921] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-02 14:43:58.935] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-02 14:43:58.938] [exthost] [info] Eager extensions activated
+[2023-07-02 14:45:13.358] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:typescript'
+[2023-07-02 14:46:51.546] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2023-07-02 15:16:26.741] [exthost] [info] extension host terminating: received terminate message from renderer
+[2023-07-02 15:16:26.742] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2023-07-02 15:16:26.754] [exthost] [info] Extension host with pid 285458 exiting with code 0

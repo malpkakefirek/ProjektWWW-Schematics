@@ -1,0 +1,84 @@
+[2023-07-02 14:24:43.922] [exthost] [info] Extension host with pid 282786 started
+[2023-07-02 14:24:43.922] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-07-02 14:24:43.929] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Lock acquired.
+[2023-07-02 14:24:44.001] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2023-07-02 14:24:44.014] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-07-02 14:24:44.016] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-07-02 14:24:44.661] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-07-02 14:24:44.710] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-07-02 14:24:44.859] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-02 14:24:44.871] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-02 14:24:44.874] [exthost] [info] Eager extensions activated
+[2023-07-02 14:25:17.102] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-07-02 14:29:14.752] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:typescript'
+[2023-07-02 14:43:31.634] [exthost] [error] [vscode.html-language-features] provider FAILED
+[2023-07-02 14:43:31.635] [exthost] [error] Error: Connection got disposed.
+	at Object.dispose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:383445)
+	at Object.dispose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:463625)
+	at T.handleConnectionClosed (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:463838)
+	at T.handleConnectionClosed (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:524244)
+	at t (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:461927)
+	at invoke (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385058)
+	at o.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385819)
+	at Q (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:372703)
+	at invoke (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385058)
+	at o.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385819)
+	at d.fireClose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:393700)
+	at ChildProcess.<anonymous> (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:404666)
+	at ChildProcess.emit (events.js:412:35)
+	at maybeClose (internal/child_process.js:1058:16)
+	at Process.ChildProcess._handle.onexit (internal/child_process.js:293:5)
+[2023-07-02 14:43:31.636] [exthost] [error] [vscode.html-language-features] provider FAILED
+[2023-07-02 14:43:31.636] [exthost] [error] Error: Connection got disposed.
+	at Object.dispose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:383445)
+	at Object.dispose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:463625)
+	at T.handleConnectionClosed (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:463838)
+	at T.handleConnectionClosed (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:524244)
+	at t (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:461927)
+	at invoke (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385058)
+	at o.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385819)
+	at Q (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:372703)
+	at invoke (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385058)
+	at o.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385819)
+	at d.fireClose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:393700)
+	at ChildProcess.<anonymous> (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:404666)
+	at ChildProcess.emit (events.js:412:35)
+	at maybeClose (internal/child_process.js:1058:16)
+	at Process.ChildProcess._handle.onexit (internal/child_process.js:293:5)
+[2023-07-02 14:43:31.636] [exthost] [error] [vscode.html-language-features] provider FAILED
+[2023-07-02 14:43:31.636] [exthost] [error] Error: Connection got disposed.
+	at Object.dispose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:383445)
+	at Object.dispose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:463625)
+	at T.handleConnectionClosed (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:463838)
+	at T.handleConnectionClosed (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:524244)
+	at t (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:461927)
+	at invoke (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385058)
+	at o.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385819)
+	at Q (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:372703)
+	at invoke (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385058)
+	at o.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385819)
+	at d.fireClose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:393700)
+	at ChildProcess.<anonymous> (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:404666)
+	at ChildProcess.emit (events.js:412:35)
+	at maybeClose (internal/child_process.js:1058:16)
+	at Process.ChildProcess._handle.onexit (internal/child_process.js:293:5)
+[2023-07-02 14:43:31.636] [exthost] [error] [vscode.html-language-features] provider FAILED
+[2023-07-02 14:43:31.636] [exthost] [error] Error: Connection got disposed.
+	at Object.dispose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:383445)
+	at Object.dispose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:463625)
+	at T.handleConnectionClosed (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:463838)
+	at T.handleConnectionClosed (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:524244)
+	at t (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:461927)
+	at invoke (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385058)
+	at o.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385819)
+	at Q (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:372703)
+	at invoke (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385058)
+	at o.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:385819)
+	at d.fireClose (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:393700)
+	at ChildProcess.<anonymous> (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/html-language-features/client/dist/node/htmlClientMain.js:1:404666)
+	at ChildProcess.emit (events.js:412:35)
+	at maybeClose (internal/child_process.js:1058:16)
+	at Process.ChildProcess._handle.onexit (internal/child_process.js:293:5)
+[2023-07-02 14:43:52.403] [exthost] [info] extension host terminating: received terminate message from renderer
+[2023-07-02 14:43:52.403] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2023-07-02 14:43:52.414] [exthost] [info] Extension host with pid 282786 exiting with code 0

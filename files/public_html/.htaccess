@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9-_]+)$ index.php?page=$1 [NC,L,QSA]
+RewriteRule ^([a-zA-Z0-9\-\_]+)\/delete\/([0-9]+)$ index.php?page=$1&delete=$2 [NC,L,QSA]
+RewriteRule ^([a-zA-Z0-9\-\_]+)\/add$ index.php?page=$1&add= [NC,L,QSA]
+RewriteRule ^([a-zA-Z0-9\-\_]+)\/add\/([0-9]+)$ index.php?page=$1&add=$2 [NC,L,QSA]
+RewriteRule ^([a-zA-Z0-9\-\_]+)\/show\/([0-9]+)$ index.php?page=$1&show=$2 [NC,L,QSA]
+RewriteRule ^([a-zA-Z0-9\-\_]+)\/edit\/([0-9]+)$ index.php?page=$1&edit=$2 [NC,L,QSA]
+RewriteRule ^schematics\/([0-9]+)$ index.php?page=schematics&view=$1 [NC,L,QSA]
+RewriteRule ^redstone\/([0-9]+)$ index.php?page=redstone&view=$1 [NC,L,QSA]
+RewriteRule ^resourcepacks\/([0-9]+)$ index.php?page=resourcepacks&view=$1 [NC,L,QSA]
+RewriteRule ^mods\/([0-9]+)$ index.php?page=mods&view=$1 [NC,L,QSA]
+RewriteRule ^sitemap\.xml$ sitemap.php [L]

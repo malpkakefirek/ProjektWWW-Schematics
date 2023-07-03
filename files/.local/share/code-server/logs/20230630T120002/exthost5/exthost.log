@@ -1,0 +1,19 @@
+[2023-06-30 18:24:26.193] [exthost] [info] Extension host with pid 151891 started
+[2023-06-30 18:24:26.193] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-06-30 18:24:26.193] [exthost] [error] Error: EEXIST: file already exists, open '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock'
+[2023-06-30 18:24:26.200] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2023-06-30 18:24:26.201] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': The lock does not look stale, elapsed: 332 ms, giving up.
+[2023-06-30 18:24:26.201] [exthost] [error] Error: EEXIST: file already exists, open '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock'
+[2023-06-30 18:24:26.202] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2023-06-30 18:24:26.202] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock': The lock does not look stale, elapsed: 416 ms, giving up.
+[2023-06-30 18:24:26.208] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-2/vscode.lock': Lock acquired.
+[2023-06-30 18:24:26.363] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-06-30 18:24:26.406] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-06-30 18:24:26.409] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-06-30 18:24:27.037] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-06-30 18:24:27.086] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-06-30 18:24:27.197] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-30 18:24:27.212] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-30 18:24:27.216] [exthost] [info] Eager extensions activated
+[2023-06-30 18:24:46.352] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2023-06-30 19:13:58.042] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:typescript'

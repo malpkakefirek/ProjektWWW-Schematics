@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="/articles/show/{{ article.id }}">
+        <button class="btn btn-info mb-4">Go to article preview</button>
+    </a>
+    <h4 class="mb-3">Edit article #{{ article.id }}</h4>
+    <form action="/articles/edit/{{ article.id }}" method="POST">
+        <input type="text" name="title" placeholder="Title"
+               style="width: 700px;"
+               value="{% if _post.title %}{{ _post.title }}{% else %}{{ article.title }}{% endif %}"
+               required="required">
+        <br />
+        <textarea name="content" class="mt-2" placeholder="Content"
+                  style="width: 700px; height: 300px;"
+                  required="required">{% if _post.content %}{{ _post.content }}{% else %}{{ article.content }}{% endif %}</textarea>
+        <br />
+        <input type="submit" class="btn btn-primary mt-2" value="Save article">
+    </form>
+{% endblock %}

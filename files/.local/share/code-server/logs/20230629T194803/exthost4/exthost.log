@@ -1,0 +1,15 @@
+[2023-06-29 20:01:27.754] [exthost] [info] Extension host with pid 211931 started
+[2023-06-29 20:01:27.754] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-06-29 20:01:27.758] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/-cc89baf/vscode.lock': Lock acquired.
+[2023-06-29 20:01:27.828] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-06-29 20:01:27.832] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-06-29 20:01:27.861] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-06-29 20:01:27.910] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-06-29 20:01:27.978] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-29 20:01:27.991] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-29 20:01:27.994] [exthost] [info] Eager extensions activated
+[2023-06-29 20:01:31.979] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-06-29 20:01:42.309] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2023-06-29 20:04:13.514] [exthost] [info] extension host terminating: received terminate message from renderer
+[2023-06-29 20:04:13.514] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/-cc89baf/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2023-06-29 20:04:13.521] [exthost] [info] Extension host with pid 211931 exiting with code 0

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h4>Articles</h4>
+    <a href="/articles/add">
+        <button class="btn btn-info mt-3" style="width: 120px;">Add article</button>
+    </a>
+    <table class="table table-striped mt-4">
+        <thead>
+        <tr class="header-row">
+            <th scope="col">Title</th>
+            <th scope="col" style="width: 250px;">Author</th>
+            <th scope="col" style="width: 120px;">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in articles %}
+        <tr>
+            <td><a href="/articles/show/{{ row.id }}">{{ row.title }}</a></td>
+            <td>{{ row.email }}</td>
+            <td>
+                {% if _session.id == row.user_id %}
+                <a href="/articles/delete/{{ row.id }}">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

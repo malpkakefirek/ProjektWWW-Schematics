@@ -1,0 +1,106 @@
+[2023-06-27 14:27:14.546] [exthost] [info] Extension host with pid 178335 started
+[2023-06-27 14:27:14.546] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-06-27 14:27:14.547] [exthost] [error] Error: EEXIST: file already exists, open '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock'
+[2023-06-27 14:27:14.548] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2023-06-27 14:27:14.549] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': The pid 175509 appears to be gone.
+[2023-06-27 14:27:14.549] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Deleting a stale lock.
+[2023-06-27 14:27:14.556] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Lock acquired.
+[2023-06-27 14:27:14.666] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2023-06-27 14:27:14.681] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-06-27 14:27:14.683] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-06-27 14:27:14.718] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-06-27 14:27:14.770] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-06-27 14:27:14.838] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-27 14:27:14.851] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-06-27 14:27:14.853] [exthost] [info] Eager extensions activated
+[2023-06-27 14:32:10.841] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-06-27 14:42:43.265] [exthost] [error] [vscode.emmet] provider FAILED
+[2023-06-27 14:42:43.267] [exthost] [error] TypeError: Cannot read property 'find' of undefined
+	at t.DefaultCompletionItemProvider.provideCompletionItemsInternal (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/emmet/dist/node/emmetNodeMain.js:1:179309)
+	at t.DefaultCompletionItemProvider.provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/emmet/dist/node/emmetNodeMain.js:1:177662)
+	at z.provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:101413)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:121631
+	at xe._withAdapter (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:111762)
+	at xe.$provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:121607)
+	at t._doInvokeHandler (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:13802)
+	at t._invokeHandler (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:13486)
+	at t._receiveRequest (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:12097)
+	at t._receiveOneMessage (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:10826)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:8922
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at P.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:15967)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:114:30660
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at P.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:15967)
+	at g._receiveMessage (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:21237)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:18115
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at b.acceptChunk (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:13328)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:12676
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:114:19664
+	at afterWrite (internal/streams/writable.js:466:5)
+	at onwrite (internal/streams/writable.js:446:7)
+	at InflateRaw.afterTransform (internal/streams/transform.js:103:3)
+	at Zlib.processCallback (zlib.js:607:8)
+[2023-06-27 14:42:44.836] [exthost] [error] [vscode.emmet] provider FAILED
+[2023-06-27 14:42:44.836] [exthost] [error] TypeError: Cannot read property 'find' of undefined
+	at t.DefaultCompletionItemProvider.provideCompletionItemsInternal (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/emmet/dist/node/emmetNodeMain.js:1:179309)
+	at t.DefaultCompletionItemProvider.provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/emmet/dist/node/emmetNodeMain.js:1:177662)
+	at z.provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:101413)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:121631
+	at xe._withAdapter (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:111762)
+	at xe.$provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:121607)
+	at t._doInvokeHandler (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:13802)
+	at t._invokeHandler (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:13486)
+	at t._receiveRequest (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:12097)
+	at t._receiveOneMessage (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:10826)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:8922
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at P.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:15967)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:114:30660
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at P.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:15967)
+	at g._receiveMessage (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:21237)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:18115
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at b.acceptChunk (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:13328)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:12676
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:114:19664
+	at afterWrite (internal/streams/writable.js:466:5)
+	at onwrite (internal/streams/writable.js:446:7)
+	at InflateRaw.afterTransform (internal/streams/transform.js:103:3)
+	at Zlib.processCallback (zlib.js:607:8)
+[2023-06-27 14:42:45.043] [exthost] [error] [vscode.emmet] provider FAILED
+[2023-06-27 14:42:45.043] [exthost] [error] TypeError: Cannot read property 'find' of undefined
+	at t.DefaultCompletionItemProvider.provideCompletionItemsInternal (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/emmet/dist/node/emmetNodeMain.js:1:179309)
+	at t.DefaultCompletionItemProvider.provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/extensions/emmet/dist/node/emmetNodeMain.js:1:177662)
+	at z.provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:101413)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:121631
+	at xe._withAdapter (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:111762)
+	at xe.$provideCompletionItems (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:95:121607)
+	at t._doInvokeHandler (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:13802)
+	at t._invokeHandler (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:13486)
+	at t._receiveRequest (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:12097)
+	at t._receiveOneMessage (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:10826)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:99:8922
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at P.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:15967)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:114:30660
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at P.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:15967)
+	at g._receiveMessage (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:21237)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:18115
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at b.acceptChunk (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:13328)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:74:12676
+	at a.fire (/usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at /usr/lib/code-server/vendor/modules/code-oss-dev/out/vs/server/remoteExtensionHostProcess.js:114:19664
+	at afterWrite (internal/streams/writable.js:466:5)
+	at onwrite (internal/streams/writable.js:446:7)
+	at InflateRaw.afterTransform (internal/streams/transform.js:103:3)
+	at Zlib.processCallback (zlib.js:607:8)
+[2023-06-27 14:51:06.508] [exthost] [info] extension host terminating: received terminate message from renderer
+[2023-06-27 14:51:06.508] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2023-06-27 14:51:06.516] [exthost] [info] Extension host with pid 178335 exiting with code 0

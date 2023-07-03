@@ -1,0 +1,17 @@
+[2023-07-01 11:22:15.697] [exthost] [info] Extension host with pid 93398 started
+[2023-07-01 11:22:15.697] [exthost] [error] Error: EACCES: permission denied, open '/tmp/vscode-ipc'
+[2023-07-01 11:22:15.699] [exthost] [error] Error: EEXIST: file already exists, open '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock'
+[2023-07-01 11:22:15.705] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2023-07-01 11:22:15.707] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3/vscode.lock': The lock does not look stale, elapsed: 705 ms, giving up.
+[2023-07-01 11:22:15.711] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock': Lock acquired.
+[2023-07-01 11:22:16.097] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+[2023-07-01 11:22:16.139] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-07-01 11:22:16.141] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2023-07-01 11:22:16.641] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-07-01 11:22:16.687] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-07-01 11:22:16.955] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-01 11:22:16.968] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-07-01 11:22:16.971] [exthost] [info] Eager extensions activated
+[2023-07-01 11:24:30.705] [exthost] [info] extension host terminating: received terminate message from renderer
+[2023-07-01 11:24:30.706] [exthost] [info] Lock '/home/s413180/.local/share/code-server/User/workspaceStorage/2e0fdad3-1/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2023-07-01 11:24:30.712] [exthost] [info] Extension host with pid 93398 exiting with code 0

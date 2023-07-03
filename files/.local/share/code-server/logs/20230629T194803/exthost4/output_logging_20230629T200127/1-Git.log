@@ -1,0 +1,39 @@
+Validating found git in: git
+Using git 2.39.3 from git
+Opening repository for path='/home/public/www_lab08_final' failed; ex=Failed to execute git {
+  "exitCode": 128,
+  "gitErrorCode": "NotAGitRepository",
+  "gitCommand": "rev-parse",
+  "stdout": "",
+  "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+}
+Opening repository for path='/home/public/www_lab08_final/.htaccess' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/composer.json' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/composer.lock' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/config.inc.php' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/guestbook.php' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/helpers.inc.php' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/index.php' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/main.php' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/templates' failed; ex=Failed to execute git {
+  "exitCode": 128,
+  "gitErrorCode": "NotAGitRepository",
+  "gitCommand": "rev-parse",
+  "stdout": "",
+  "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+}
+Opening repository for path='/home/public/www_lab08_final/test.php' failed; ex=Error: spawn ENOTDIR
+Opening repository for path='/home/public/www_lab08_final/templates' failed; ex=Failed to execute git {
+  "exitCode": 128,
+  "gitErrorCode": "NotAGitRepository",
+  "gitCommand": "rev-parse",
+  "stdout": "",
+  "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+}
+Opening repository for path='/home/public/www_lab08_final' failed; ex=Failed to execute git {
+  "exitCode": 128,
+  "gitErrorCode": "NotAGitRepository",
+  "gitCommand": "rev-parse",
+  "stdout": "",
+  "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+}

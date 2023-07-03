@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="/articles">
+        <button class="btn btn-info mb-4">Go to article list</button>
+    </a>
+
+    <h4>
+        Article: {{ article.title }}
+        {% if _session.id == article.user_id %}
+        <a href="/articles/edit/{{ article.id }}">
+            <button class="btn btn-sm btn-primary">Edit</button>
+        </a>
+        {% endif %}
+    </h4>
+
+    <pre class="mt-4">
+{{ article.content}}
+    </pre>
+{% endblock %}

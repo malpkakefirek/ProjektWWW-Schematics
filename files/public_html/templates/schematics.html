@@ -1,0 +1,491 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .aspect-16x9 {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ration */
+        height: 0;
+    }
+    .aspect-16x9 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .upload-link{
+        color: #fff !important;
+        text-decoration: none !important;
+    }
+    /* STAR RATINGS HERE */
+    .ratings-wrapper{
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+    .ratings{
+        display:flex;
+        flex-direction: row-reverse;
+    }
+    .ratings span{
+        cursor: pointer;
+        transition: color .2s, transform .2s;
+        font-size: 21px;
+    }
+    .ratings span:hover{
+        color: var(--green-vanilla-01);
+        transform: scale(1.1);
+    }
+    .ratings span:hover ~ span{
+        color: var(--green-vanilla-01);
+    }
+    .ratings span[data-color-selected="orange"]{
+        color: orange;
+    }
+    .ratings span[data-color-selected="orange"] ~ span{
+        color: orange;
+    }
+    .ratings span[data-color-selected="blue"]{
+        color: var(--green-vanilla-01);
+    }
+    .ratings span[data-color-selected="blue"] ~ span{
+        color: var(--green-vanilla-01);
+    }
+    .custom-card-header {
+        display: flex; 
+        justify-content: space-between; 
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0; 
+        padding: 0.5rem;
+        margin-bottom: 0;
+        background-color: #444;
+        border-bottom: 1px solid rgba(0,0,0,.125);
+        padding-bottom: 0px;
+    }
+    .custom-description {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top:8px;
+        margin-bottom:4px;
+    }
+    .custom-card-title {
+        margin-bottom: 0px;
+        font-size: 19px;
+    }
+    .game-version {
+        font-size: 12px;
+        color: #b7b8bc;
+    }
+    .upload-area {
+        width: 100%;
+        height: 60px;
+        border: 2px dashed #ccc;
+        line-height: 60px;
+        text-align: center;
+        cursor: pointer;
+        color: #ccc;
+    }
+
+    .upload-area:hover {
+        background-color: #f2f2f2;
+    }
+    .upload-area.highlight {
+        background-color: #f2f2f2;
+    }
+    .bg-custom {
+        background-color: rgb(59, 133, 38);
+    }
+    .custom-select {
+        appearance: none;
+        outline: 0;
+        box-shadow: none;
+        border: 1px solid rgba(34,36,38,.15);
+        background: rgb(59, 133, 38);
+        border-radius: 5px;
+        width: 60px;
+        height: 30px;
+        text-align:center;
+    }
+    .modal-body {
+        border-radius: unset;
+        padding: 0 4px;
+    }
+    .modal-field {
+        margin-top: 8px !important;
+        margin-bottom: 0 !important;
+    }
+    .modal-footer {
+        padding: 4px;
+    }
+</style>
+
+<div class="p-5 rounded" style="margin-bottom: 2rem;">
+    <div class="container">
+        <h1 class="display-4" style="color: var(--green-vanilla-03)">SCHEMATICS</h1>
+        <p class="lead">BROWSE THE CREATIONS OF OTHERS!</p>
+        <p class=".h3">CURRENTLY BROWSING FOR <span id="gameVersion">{{ current_version }}</span></p>
+        <hr class="my-4">
+        <p>OR UPLOAD YOUR OWN HERE:</p>
+        <button id="btn-upload" class="mc-button__primary mc-button__badger--green mc-get-button button-to-listen" style="width: 27.5%; margin-right: 9%;"  data-bs-target="#exampleModal">
+            <span class="mc-button__text mc-button__header">
+                <a class="upload-link">UPLOAD</a>
+            </span>
+        </button>
+    </div>
+</div>
+
+<div class="container" > 
+    <div class="row">
+        {% for schematic in results|reverse %}
+            <div class="col-lg-4 col-md-6 col-sm-12" style="width:27rem;">
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="card-body">
+                        <div class="custom-card-header">
+                            <h4 class="custom-card-title">
+                                <div class="user-text" style="word-wrap:break-word; max-width:15rem; color:var(--green-vanilla-03)">{{ schematic.name | e }}</div>
+                                <div class="user-text game-version">GAME VERSIONS: 1.{{ schematic.version_start  | e }} - 1.{{ schematic.version_end  | e }}</div>
+                            </h4>
+                            <div class="ratings-wrapper">
+                                <div data-productid="{{ schematic.id  | e }}" class="ratings" style="font-size: 25px;">
+                                    {% set color_rating = schematic.user_rating is defined and schematic.user_rating is not null ? "blue" : "orange" %}
+                                    {% set star_rating = color_rating == "blue" ? schematic.user_rating : (schematic.avg_rating | round) %}
+
+                                    {% if schematic.avg_rating is not null %}
+                                        {% for i in range(5, 1, -1) %}
+                                            <span data-rating="{{ i }}" data-color-selected="{% if i == star_rating %}{{color_rating}}{% else %}gray{% endif %}">&#9733</span>
+                                        {% endfor %}
+                                    {% else %}
+                                        {% for i in range(5, 1, -1) %}
+                                            <span data-rating="{{ i }}" data-color-selected="gray">&#9733</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="average-rating" style="font-size: 12px; white-space: nowrap;">
+                                    AVG RATING: {{ schematic.avg_rating | number_format(2, '.', ',') }}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="aspect-16x9">
+                            <img src="{{ schematic.image | default('/assets/no_image.png') | e }}" class="img-fluid card-img-top" alt="{{ schematic.name | e }}" title="{{ schematic.description | e }}"> 
+                        </div>
+                        <div class="custom-description">
+                            <h6 class="card-title d-flex">UPLOADED ON {{ schematic.date_added  | e }}</h6>
+                            <h6 class="card-title d-flex">
+                                <div class="user-text">BY</div>
+                                <div class="user-text username">{{ schematic.user  | e }}</div>
+                            </h6>
+                        </div>
+                        <a href="{{ schematic.file_path | e }}" download style="text-decoration: none;color: inherit;">
+                            <button id="btn-download" class="mc-button__primary mc-button__badger--green mc-get-button btn-download" style="width: 44%; margin-right: 9%;margin-left: 1%;">
+                                <span class="mc-button__text mc-button__header">
+                                    DOWNLOAD
+                                </span>
+                            </button>
+                        </a>
+                        <a href="/schematics/{{ schematic.id }}" style="text-decoration: none;color: inherit;">
+                            <button id="btn-view3d-{{ schematic.id | e }}" class="mc-button__primary mc-button__badger--green mc-get-button" data-schematic-id="{{ schematic.id | e }}" style="width: 44%;">
+                                <span class="mc-button__text mc-button__header" data-toggle="modal" data-target="#modal3d">
+                                    DETAILS & 3D
+                                </span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<form id="upload-form-it-is-unique" action="upload.php" method="post" enctype="multipart/form-data">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-custom  text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">UPLOAD SCHEMATIC</h5>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 modal-field">
+                        <input type="text" maxlength="24" class="form-control" id="name" name="name" placeholder="NAME" required>
+                    </div>
+                    <div class="mb-3 modal-field">
+                        <input type="text" maxlength="240" class="form-control" id="description" name="description" placeholder="DESCRIPTION">
+                    </div>
+                    <div class="mb-3 modal-field d-flex align-items-center justify-content-center">
+                        <select class="custom-select mx-2 text-white" id="version_start" name="version_start" required>
+                            {% for version in versions %}
+                                <option value="{{ version }}">1.{{ version }}</option>
+                            {% endfor %}
+                        </select>
+                        - 
+                        <select class="custom-select mx-2 text-white" id="version_end" name="version_end" required>
+                            {% for version in versions %}
+                                <option value="{{ version }}">1.{{ version }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="upload-area modal-field" id="schematic-upload-area" style="position: relative;">
+                        <span>DRAG AND DROP SCHEMATIC HERE OR CLICK TO SELECT FILE</span>
+                        <input type="file" style="display:none;" name="fileToUpload" id="fileToUpload" accept=".litematic"/>
+                    </div>
+                    <div class="upload-area modal-field" id="image-upload-area" style="position: relative;">
+                        <span>DRAG AND DROP IMAGE HERE OR CLICK TO SELECT FILE</span>
+                        <input type="file" style="display:none;" name="imageToUpload" id="imageToUpload" accept=".jpg, .png, .gif"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="formPage" id="formPage" value="{{ page }}" />
+                        <input type="hidden" name="userId" id="userId" value="{{ _session.id }}" />
+                    </div>
+                </div>
+                <div class="modal-footer modal-field justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn bg-custom" value="Upload" name="submit">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+<!-- PLEASE LOG IN TO RATE MODAL-->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">PLEASE LOG IN TO RATE SCHEMATICS!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <a href="/login?redirect=schematics" class="btn btn-secondary" style="color: white; background-color: var(--green-vanilla-01); text-decoration: none;">Log In</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PLEASE LOG IN TO UPLOAD-->
+<div class="modal fade" id="myModalUpload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">PLEASE LOG IN TO UPLOAD!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <a href="/login?redirect=schematics" class="btn btn-secondary" style="color: white; background-color: var(--green-vanilla-01); text-decoration: none;">Log In</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<div id="results-data" data-results="{{ results|json_encode }}"></div>
+
+<!-- Star ratings -->
+<script>
+    let stars = document.querySelectorAll(".ratings span");
+    let products = document.querySelectorAll(".ratings");
+    let ratings = [];
+
+    for(let star of stars){
+        star.addEventListener("click", function(){
+            let rating = this.dataset.rating;
+            let productId = this.parentElement.dataset.productid;
+
+            let data = {
+                "stars": rating,
+                "product-id": productId,
+                "user-id": "{{ _session.id }}",
+            }
+            if(data["user-id"]){
+                var resultsDataDiv = document.getElementById("results-data");
+                var results = JSON.parse(resultsDataDiv.getAttribute("data-results"));
+                var iscontinue=true;
+                for (var i = 0; i < results.length; i++) {
+                    if(data["product-id"] == results[i]["id"]){
+                        // Delete rating when clicked on the same star
+                        if(data["stars"] == results[i]["user_rating"]){
+                            let data_delete = {
+                                "delete": true,
+                                "product-id": productId,
+                                "user-id": "{{ _session.id }}",
+                            }
+                            const XHR = new XMLHttpRequest();
+
+                            XHR.open('POST', '/schematics', true);
+                            XHR.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                            XHR.onreadystatechange = function () {
+                                if (this.readyState === 4 || this.status === 200) {
+                                    console.log(this.responseText); // echo from php
+                                }
+                            };
+
+                            // When everything is sent, reload the page to redraw changes
+                            XHR.addEventListener('load', function(event) {
+                                location.reload();
+                            });
+
+                            XHR.send(JSON.stringify(data_delete));
+                            iscontinue=false;
+                        }
+                        
+                    }
+                }
+                if(iscontinue){
+                    // Send your ratings to form
+                    const XHR = new XMLHttpRequest();
+
+                    XHR.open('POST', '/schematics', true);
+                    XHR.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    XHR.onreadystatechange = function () {
+                        if (this.readyState === 4 || this.status === 200) {
+                            console.log(this.responseText); // echo from php
+                        }
+                    };
+
+                    // When everything is sent, reload the page to redraw changes
+                    XHR.addEventListener('load', function(event) {
+                        location.reload();
+                    });
+
+                    XHR.send(JSON.stringify(data));
+                }
+            } else {
+                // Login to rate modal
+                var myModal = new bootstrap.Modal(document.getElementById('myModal'), {});
+                myModal.show();
+            }
+        });
+    }
+</script>
+
+<!-- Upload files -->
+<script>
+    var button = document.getElementsByClassName('button-to-listen')[0];
+    button.addEventListener('click', buttonClickHandler);
+
+    function buttonClickHandler() {
+        let data = {
+            "user-id": "{{ _session.id }}",
+        }
+        if(data['user-id']){
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {});
+            myModal.show();
+        } else {
+            var myModal = new bootstrap.Modal(document.getElementById('myModalUpload'), {});
+            myModal.show();
+        }
+    }
+
+    document.querySelectorAll('.upload-area').forEach(uploadArea => {
+        let inputFile = uploadArea.querySelector('input[type="file"]');
+        let span = uploadArea.querySelector('span');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.add('highlight'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('highlight'), false);
+        });
+
+        uploadArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+            
+            handleFiles(files);
+            let fileNames = Array.from(inputFile.files).map(file => file.name);
+            span.innerText = fileNames.join(', ') || 'Drag and drop file here or click to select file';
+        }
+
+        function handleFiles(files) {
+            inputFile.files = files;
+        }
+
+        uploadArea.addEventListener('click', () => {
+            inputFile.click();
+        });
+
+        inputFile.addEventListener('change', () => {
+            let fileNames = Array.from(inputFile.files).map(file => file.name);
+            span.innerText = fileNames.join(', ') || 'Drag and drop file here or click to select file';
+        });
+    });
+</script>
+
+<!-- Color current page in navbar -->
+<script>
+    var elements = document.querySelectorAll(".subpages");
+    for (let element of elements) {
+        if (element.textContent.toLowerCase() == "{{ page }}") {
+            element.className = element.className + " current-page";
+        }
+    }
+</script>
+
+<!-- FIX TO PREVENT WRONG VERSION SELECTION -->
+<script>
+    $(document).ready(function(){
+        var versions = "{{ versions|json_encode }}";
+        var startIndex = $('#version_start');
+        var endIndex = $('#version_end');
+
+        function restrictVersions(startElem, endElem) {
+            var startVersion = parseFloat(startElem.val());
+            var endVersion = parseFloat(endElem.val());
+            if (endVersion < startVersion) {
+                endElem.val(startVersion);
+            }
+            var endOptions = endElem.children('option').each(function () {
+                var optionVersion = parseFloat($(this).val());
+                if (optionVersion < startVersion) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        }
+
+        function restrictReverse(endElem, startElem) {
+            var endVersion = parseFloat(endElem.val());
+            var startOptions = startElem.children('option').each(function () {
+                var optionVersion = parseFloat($(this).val());
+                if (optionVersion > endVersion) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        }
+
+        // if start changes, adjust end
+        startIndex.change(function() {
+            restrictVersions(startIndex, endIndex);
+        });
+
+        // if end changes, adjust start
+        endIndex.change(function() {
+            restrictReverse(endIndex, startIndex);
+        });
+    });
+</script>
+{% endblock %}

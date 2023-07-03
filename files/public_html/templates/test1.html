@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h6>ZNAJDUJESZ SIE W TEST1</h6>
+<h6>UZYWASZ WERSJI GRY: <span id="gameVersion"></span></h6>
+<script>
+    // Get the version from localStorage
+    let version = localStorage.getItem('version');
+
+    // Display the version
+    if (version) {
+        document.getElementById('gameVersion').textContent = version;
+    } else {
+        document.getElementById('gameVersion').textContent = 'default';
+    }
+</script>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    Select file to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="hidden" name="formPage" id="formPage" value="{{ page }}" />
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+
+{% endblock %}

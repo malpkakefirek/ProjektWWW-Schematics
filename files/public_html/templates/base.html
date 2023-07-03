@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Page {{ get_domain() }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/darkly/bootstrap.min.css" integrity="sha256-VZi/r/RC1MritcGE2Yyxb/ACi8WIOj1Y7BHuslF8+6I=" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <style>
+            @import url('https://fonts.cdnfonts.com/css/minecraft-4');
+            @import url('https://fonts.cdnfonts.com/css/mineplayer');
+            :root{
+                --green-vanilla-01: #3c8527;
+                --green-vanilla-02: #2a641c;
+                --green-vanilla-03: #52a535;
+                --green-vanilla-04: #a0e081;
+                --green-vanilla-button-focus-border: #1452cc;
+                --transparent: transparent;
+                --white-01: #ffffff;
+                /* --white-02: #e7eaef; */
+                --black-01: #000000;
+                --black-02: #262423;
+                /* --black-03: #071927; */
+                /* --black-04: #252525; */
+                /* --black-05: #8d8e92; */
+                /* --black-06: #2b2827; */
+                --black-07: #171615;
+                /* --black-A33: #ffffff33; */
+                /* --black-A4d: #ffffff4d; */
+                --black-A26: #00000026;
+                --black-A40: #00000040;
+                --disabled-01: #aba09c;
+                --disabled-02: #ede5e2;
+                --linear-gradient-vanilla-01: linear-gradient( 0deg, var(--black-A26), var(--black-A26) ),var(--green-vanilla-01);
+                --text-shadow-vanilla-01: 0px 2px 0px var(--green-vanilla-02);
+                --box-shadow-vanilla-01: inset 0 4px var(--green-vanilla-03),inset 0 -4px var(--green-vanilla-02),0 4px var(--black-A40);
+                /* --link-arrow-dark: brightness(0) saturate(100%) invert(86%) sepia(0%) saturate(0%) hue-rotate(94deg) brightness(92%) contrast(92%); */
+                /* --link-arrow-green: brightness(0) saturate(100%) invert(79%) sepia(64%) saturate(296%) hue-rotate(48deg) brightness(98%) contrast(83%); */
+                /* --link-arrow-black: brightness(0) saturate(100%) invert(0%) sepia(100%) saturate(7465%) hue-rotate(104deg) brightness(93%) contrast(107%) */
+            }
+            .main-pane-background {
+                background-color: rgba(0, 0, 0, 0.322);
+            }
+            .jeb-text {
+                -webkit-animation: rainbow 2.5s infinite; 
+                animation: rainbow 2.5s infinite;
+            }
+            @keyframes rainbow{
+                0%{color: orange;}  
+                10%{color: purple;} 
+                20%{color: red;}
+                30%{color: CadetBlue;}
+                40%{color: yellow;}
+                50%{color: coral;}
+                60%{color: green;}
+                70%{color: cyan;}
+                80%{color: DeepPink;}
+                90%{color: DodgerBlue;}
+                100%{color: orange;}
+            }
+            .dinnerbone-text:hover {
+                transform: scale(1, -1);
+                -moz-transform: scale(1, -1);
+                -webkit-transform: scale(1, -1);
+                -o-transform: scale(1, -1);
+                -ms-transform: scale(1, -1);
+                transform: scale(1, -1);
+            }
+            .navbar.bg-primary {
+                background-color: var(--black-07) !important;
+            }
+            .navbar.navbar-expand-xl {
+                justify-content: space-around;
+            }
+            .navbar-part {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+            }
+            .navbar-part:first-child {
+                margin-right: auto;
+                justify-content: flex-start;
+                padding-left: 1rem;
+            }
+            .navbar-part:last-child {
+                margin-left: auto;
+                justify-content: flex-end;
+                padding-right: 1rem;
+            }
+            .navbar-collapse {
+                flex-grow: unset;
+            }
+            .navbar {
+                flex-direction: column;
+                /* Sticky navbar */
+                width: 100%;
+                height: 72px;
+                position: fixed;
+                top: 0;
+                z-index: 1030; /* to prevent the navbar getting covered up by other content */
+            }
+            .navbar-top {
+                display: flex;
+                width: 100%;
+            }
+            .navbar-bottom {
+                display: flex;
+                flex-direction: column;
+                height: fit-content;
+                width: 100%;
+                z-index: 1020;
+                align-items: center;
+                border-bottom: none;
+                background-color: var(--black-02);
+            }
+            @media (min-width: 1200px) {
+                .navbar-bottom {
+                    display: none !important;
+                }
+            }
+
+            /* Nav links */
+            .nav-link {
+                color: #a2a2a2;
+            }
+            .nav-link:hover {
+                color: var(--white-01);
+            }
+            .nav-link:focus {
+                color: var(--white-01);
+            }
+            .nav-small {
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                border-bottom: #3e3e3e solid 1px;
+            }
+            .current-page {
+                color: var(--green-vanilla-04) !important;
+            }
+
+            .sublist {
+                padding: 0;
+            }
+            .version-item, .version-group {
+                color: var(--white-01);
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
+            .version-item:hover, .version-group:hover {
+                color: var(--white-01);
+                background-color: var(--black-A26);
+            }
+            .version-selected {
+                color: var(--green-vanilla-04) !important;
+            }
+            .form-field {
+                padding-bottom: 0.5rem;
+            }
+            .d-flex {
+                align-content: center;
+                margin: 0px;
+            }
+            .btn.btn-info {
+                background-color: var(--green-vanilla-01) !important;
+                border-color: var(--green-vanilla-01) !important; 
+            }
+            html, body {
+                height: 100%;
+                color: #e5e5e5;
+                background-color: var(--black-01);
+                font-family: 'MinePlayer', sans-serif;
+                min-height: 100vh;  /* Dodalem 01.07 o 11:32 jakby cos psuło */
+            }
+            .user-text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .username {
+                margin-left: 4px;
+                color: var(--green-vanilla-04);
+            }
+
+            /* MC BUTTON */
+            .mc-button__primary.mc-button__badger--green {
+                padding: 0;
+                position: relative;
+                outline: 0;
+                border-width: 0;
+            }
+            .mc-button__primary.mc-button__badger--green:focus:before {
+                content: "";
+                background: var(--transparent);
+                border: .1875rem solid var(--green-vanilla-button-focus-border);
+                outline: .0625rem solid var(--white-01);
+                position: absolute;
+                width: calc(100% + .375rem);
+                height: calc(100% + .3125rem);
+                left: -.1875rem;
+                top: -.1875rem
+            }
+            .mc-button__primary.mc-button__badger--green .mc-button__text {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0.5rem 0.5rem;
+                height: 2.5rem;
+                border-width: 0 0 .25rem;
+                background: var(--green-vanilla-01);
+                border: .125rem solid var(--black-02);
+                font-style: normal;
+                font-weight: 800;
+                color: var(--white-01);
+                letter-spacing: .03rem;
+                text-transform: uppercase;
+                cursor: pointer;
+                pointer-events: all;
+                margin: 0;
+                outline: 0;
+                text-shadow: var(--text-shadow-vanilla-01);
+                box-shadow: var(--box-shadow-vanilla-01)
+            }
+            .mc-button__primary.mc-button__badger--green .mc-button__text::after,.mc-button__primary.mc-button__badger--green .mc-button__text::before {
+                content: "";
+                position: absolute;
+                background: var(--green-vanilla-02);
+                height: 1.925rem;
+                width: .25rem;
+                bottom: .05rem;
+                border-width: 0 0 .25rem;
+                border-bottom: .225rem solid var(--black-02);
+                box-shadow: none
+            }
+            .mc-button__primary.mc-button__badger--green .mc-button__text::before {
+                left: -.25rem
+            }
+            .mc-button__primary.mc-button__badger--green .mc-button__text::after {
+                right: -.25rem
+            }
+            .mc-button__primary.mc-button__badger--green:focus .mc-button__text,.mc-button__primary.mc-button__badger--green:hover .mc-button__text {
+                background: var(--linear-gradient-vanilla-01)
+            }
+            .mc-button__primary.mc-button__badger--green:active .mc-button__text {
+                box-shadow: none;
+                background: var(--green-vanilla-02)
+            }
+            .mc-button__primary.mc-button__badger--green:active {
+                box-shadow: none
+            }
+            .mc-button__primary.mc-button__badger--green:active::before {
+                content: unset
+            }
+            .mc-button__primary.mc-button__badger--green:focus .mc-button__text:after,.mc-button__primary.mc-button__badger--green:focus .mc-button__text:before,.mc-button__primary.mc-button__badger--green:hover .mc-button__text:after,.mc-button__primary.mc-button__badger--green:hover .mc-button__text:before {
+                bottom: .05rem;
+                box-shadow: none;
+                background: var(--green-vanilla-02)
+            }
+            .mc-button__primary.mc-button__badger--green:focus .mc-button__text:after,.mc-button__primary.mc-button__badger--green:focus .mc-button__text:before {
+                background: var(--linear-gradient-vanilla-01)
+            }
+            .mc-button__primary.mc-button__badger--green:active .mc-button__text:after,.mc-button__primary.mc-button__badger--green:active .mc-button__text:before {
+                background: var(--green-vanilla-02)
+            }
+            .mc-button__primary.mc-button__badger--green:focus .mc-button__text {
+                border-top-width: 0;
+                border-bottom-width: 0
+            }
+            .mc-button__primary.mc-button__badger--green:focus .mc-button__text:after,.mc-button__primary.mc-button__badger--green:focus .mc-button__text:before {
+                bottom: .15rem
+            }
+            .mc-button__primary.mc-button__badger--green.mc-button__disabled .mc-button__text {
+                background: var(--disabled-02);
+                color: var(--disabled-01);
+                text-shadow: none;
+                box-shadow: none;
+                border: 0
+            }
+            .mc-button__primary.mc-button__badger--green.mc-button__disabled {
+                pointer-events: none;
+                padding: 0;
+                margin-right: 24px
+            }
+            .mc-button__primary.mc-button__badger--green.mc-button__disabled .mc-button__text::after,.mc-button__primary.mc-button__badger--green.mc-button__disabled .mc-button__text::before,.mc-button__primary.mc-button__badger--green.mc-button__disabled:focus .mc-button__text:after,.mc-button__primary.mc-button__badger--green.mc-button__disabled:focus .mc-button__text:before,.mc-button__primary.mc-button__badger--green.mc-button__disabled:hover .mc-button__text:after,.mc-button__primary.mc-button__badger--green.mc-button__disabled:hover .mc-button__text:before {
+                background: var(--disabled-02)
+            }
+            .mc-button__primary.mc-button__badger--green.mc-button__disabled::before {
+                content: "";
+                border: .125rem solid var(--disabled-01);
+                position: absolute;
+                width: calc(100% + .25rem);
+                height: calc(100% + .25rem);
+                left: -.12rem;
+                top: -.12rem;
+                outline: 0
+            }
+            .mc-button__primary.mc-button__badger--green.mc-button__disabled .mc-button__text::after,.mc-button__primary.mc-button__badger--green.mc-button__disabled .mc-button__text::before {
+                bottom: .25rem;
+                border-bottom: 0
+            }
+            .mc-button__primary.mc-button__badger--green.mc-button__disabled .mc-button__text::before {
+                border: .125rem solid var(--disabled-01);
+                border-right: 0;
+                left: -.35rem;
+                width: .35rem
+            }
+            .mc-button__primary.mc-button__badger--green.mc-button__disabled .mc-button__text::after {
+                border: .125rem solid var(--disabled-01);
+                border-left: 0;
+                right: -.35rem;
+                width: .35rem
+            }
+            .mc-button-navbar {
+                background-color: var(--black-07);
+            }
+
+            /* Window size */
+            @media (min-width: 576px) {
+                .container, .container-sm {
+                    max-width: 480px;
+                    /* max-width: 540px; */
+                }
+            }
+            @media (min-width: 768px) {
+                .container, .container-md, .container-sm {
+                    max-width: 480px;
+                    /* max-width: 720px; */
+                    /* Dla tego juz musimy zmienic koncepcje, jak wyswietlamy pojedyncze schematici,
+                    bo dla takiego rozmiaru i terazniejszej koncepcji, to smiesznie wyglada
+                    jak tylko 1 schematic sie miesci w poziomie */
+                }
+            }
+            @media (min-width: 992px) {
+                .container, .container-lg, .container-md, .container-sm {
+                    max-width: 920px;
+                    /* max-width: 900px; */
+                }
+            }
+            @media (min-width: 1040px) {
+                .container, .container-lg, .container-md, .container-sm {
+                    max-width: 920px;
+                    /* max-width: 900px; */
+                }
+            }
+            @media (min-width: 1200px) {
+                .container, .container-lg, .container-md, .container-sm, .container-xl {
+                    max-width: 920px;
+                    /* max-width: 1140px; */
+                }
+            }
+            @media (min-width: 1400px) {
+                .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+                    max-width: 1350px;
+                }
+            }
+            @media (min-width: 1960px) {
+                .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+                    max-width: 1776px;
+                }
+            }
+            
+
+            /* DO TESTOW NA PRZYSZLOSC ! TLO MINEACRAFT DIRT BLOCK */
+            body{
+                background: 
+                    /* linear-gradient(to right, rgba(0, 0, 0, 0.4) 15%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.4) 85%), */
+                    url('/assets/dirt_background.png') repeat;
+                height: auto;
+            }
+           
+        </style>
+    </head>
+    <body>
+        <div id="container" style="min-height: inherit; position:relative;">
+            <nav class="navbar navbar-expand-xl navbar-dark bg-primary">
+                <div id="navbar-top" class="navbar-top">
+                    <div id="navbar-left" class="navbar-part">
+                        <button id="menu-btn" class="mc-button__primary mc-button__badger--green mc-get-button mc-button-navbar">
+                            <span class="mc-button__text mc-button__header">
+                                <i class="fas fa-bars fa-lg"></i>
+                            </span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav" id="menu-buttons">
+                                <!--
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/">Main page</a>
+                                </li>
+                                !-->
+                                <li class="nav-item">
+                                    <a class="nav-link subpages" href="/schematics">Schematics</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link subpages" href="/redstone">Redstone</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link subpages" href="/resourcepacks">Resourcepacks</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link subpages" href="/mods">Mods</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="navbar-center" class="navbar-part">
+                        <a class="navbar-brand" href="/#" >MINECRAFT SCHEMATICS</a><!--{{ get_domain() }}</a>-->
+                    </div>
+                    <div id="navbar-right" class="navbar-part">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav" id="login-buttons" style="flex-direction:row; flex-wrap:wrap; justify-content:flex-end;">
+                                {% if _session.id %}
+                                    <div class="d-flex">
+                                        <div class="user-text">Welcome</div>
+                                        <div class="user-text username">{{ _session.username }}</div>
+                                        <div class="user-text">!</div>
+                                    </div>
+                                    <li class="nav-item">
+                                        <a class="nav-link logout_button" href="/logout" style="padding:0; padding-left:0.5rem;">Log out</a>
+                                    </li>
+                                {% else %}
+                                    <li class="mc-button__primary mc-button__badger--green mc-get-button mc-button-navbar nav-item">
+                                        <a class="mc-button__text mc-button__header nav-link login_button" href="/login">Login</a>
+                                    </li>
+                                    <li class="nav-item user-text" style="margin-left: 8px;">
+                                        <a class="nav-link user-text register_button" href="/register" style="padding:0; padding-left:0.5rem;">Register account</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button> -->
+                        <button id="navbar-toggler" class="navbar-toggler">
+                            <i class="fas fa-bars fa-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div id="navbar-bottom" aria-labelledby="navbar-bottomLabel" class="navbar-bottom offcanvas offcanvas-top">
+                <div class="offcanvas-body" style="width: 100%; padding: 0;">
+                    <ul class="navbar-nav" id="menu-buttons2" style="background-color: var(--black-A40);">
+                        {% if _session.id %}
+                        <div class="nav-item nav-small d-flex">
+                            <div class="nav-link user-text">Welcome</div>
+                            <div class="nav-link user-text username">{{ _session.username }}</div>
+                            <div class="nav-link user-text">!</div>
+                        </div>
+                        <li class="nav-item">
+                            <a class="nav-link nav-small logout_button" href="/logout">Log out</a>
+                        </li>
+                        {% else %}
+                        <li class="mc-button__primary mc-button__badger--green mc-get-button mc-button-navbar nav-item">
+                            <a class="mc-button__text mc-button__header nav-link login_button" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item user-text">
+                            <a class="nav-link nav-small register_button" href="/register">Register account</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    <ul class="navbar-nav" id="menu-buttons3">
+                        <li class="nav-item">
+                            <a class="nav-link nav-small subpages" href="/schematics">Schematics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-small subpages" href="/redstone">Redstone</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-small subpages" href="/resourcepacks">Resourcepacks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-small subpages" href="/mods">Mods</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container mb-5 main-pane-background" style="min-height:max-content; padding-top:72px; padding-bottom:72px;">
+                <div class="row">
+                    <div>
+                    {% for msg in get_msg() %}
+                    <div id="alerts">
+                        {% if msg.type == 'success' %}
+                        <div class="alert alert-success">{{ msg.text }}</div>
+                        {% elseif msg.type == 'error' %}
+                        <div class="alert alert-danger">{{ msg.text }}</div>
+                        {% else %}
+                        <div class="alert alert-primary">{{ msg.text }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    {% block content %}
+                    {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+            <footer id="bottom-menu" class="footer mt-auto py-3" style="background-color:var(--black-07); height:56px; position:absolute; bottom:0; width:100%; z-index: 999;">
+                <div class="container">
+                    <span class="text-muted">MADE BY SERATOWICZ, CZAJKOWSKI, MARCINIEC</span>
+                </div>
+            </footer>
+        </div>
+
+        
+        <!-- Versions List -->
+        <div class="offcanvas offcanvas-start bg-success text-white" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="margin-top: 76px; width: 100px;">
+            <div class="offcanvas-header" style="background-color: var(--green-vanilla-02); padding: 10px 10px; height:69px;">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Game Version</h5>
+                <!--<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>-->
+            </div>
+            <div class="offcanvas-body" style="background-color: var(--green-vanilla-01); padding-left: 0; list-style: none; padding-top: 0; padding-right: 0;">
+                <ul class="list-group">
+                    <li class="nav-item">
+                        <a class="nav-link toggle-sublist version-group" href="#" style="padding: 4px 10px;">
+                            <i class="bi bi-caret-right-fill"></i> 1.20
+                        </a>
+                        <ul class="sublist" style="list-style: none;">
+                            <li><a class="nav-link version-item" href="#">1.20.1</a></li>
+                            <li><a class="nav-link version-item" href="#">1.20</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link toggle-sublist version-group" href="#" style="padding: 4px 10px;">
+                            <i class="bi bi-caret-right-fill"></i> 1.19
+                        </a>
+                        <ul class="sublist" style="list-style: none;">
+                            <li><a class="nav-link version-item" href="#">1.19.4</a></li>
+                            <li><a class="nav-link version-item" href="#">1.19.3</a></li>
+                            <li><a class="nav-link version-item" href="#">1.19.2</a></li>
+                            <li><a class="nav-link version-item" href="#">1.19.1</a></li>
+                            <li><a class="nav-link version-item" href="#">1.19</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link toggle-sublist version-group" href="#" style="padding: 4px 10px;">
+                            <i class="bi bi-caret-right-fill"></i> 1.18
+                        </a>
+                        <ul class="sublist" style="list-style: none;">
+                            <li><a class="nav-link version-item" href="#">1.18.2</a></li>
+                            <li><a class="nav-link version-item" href="#">1.18.1</a></li>
+                            <li><a class="nav-link version-item" href="#">1.18</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link toggle-sublist version-group" href="#" style="padding: 4px 10px;">
+                            <i class="bi bi-caret-right-fill"></i> 1.17
+                        </a>
+                        <ul class="sublist" style="list-style: none;">
+                            <li><a class="nav-link version-item" href="#">1.17.1</a></li>
+                            <li><a class="nav-link version-item" href="#">1.17</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link toggle-sublist version-group" href="#" style="padding: 4px 10px;">
+                            <i class="bi bi-caret-right-fill"></i> 1.16
+                        </a>
+                        <ul class="sublist" style="list-style: none;">
+                            <li><a class="nav-link version-item" href="#">1.16.5</a></li>
+                            <li><a class="nav-link version-item" href="#">1.16.4</a></li>
+                            <li><a class="nav-link version-item" href="#">1.16.3</a></li>
+                            <li><a class="nav-link version-item" href="#">1.16.2</a></li>
+                            <li><a class="nav-link version-item" href="#">1.16.1</a></li>
+                            <li><a class="nav-link version-item" href="#">1.16</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Cookie handling -->
+        <script>
+            function setCookie(cname, cvalue, exdays) {
+                const d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                let expires = "expires="+ d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookie(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        </script>
+
+        <!-- Colored usernames easter-egg -->
+        <script>
+            $(document).ready(function() {
+                let usernames = document.querySelectorAll('.username');
+                usernames.forEach(function(username) {
+                    let username_text = username.textContent.toLowerCase()
+                    if (username_text == 'jeb_') {
+                        username.classList += ' jeb-text';
+                    }
+                    if (username_text == 'dinnerbone' || username_text == 'grumm') {
+                        username.classList += ' dinnerbone-text';
+                    }
+                })
+            });
+        </script>
+
+        <!-- Bottom collapsible navbar -->
+        <script>
+            const navbarButton = document.querySelector('#navbar-toggler');
+            const navbarBottomElement = document.querySelector('#navbar-bottom');
+            const navbarElement1 = document.querySelector('.navbar');
+
+        
+            let navbarOffcanvas = new bootstrap.Offcanvas(navbarBottomElement, { backdrop: false });  // Disable backdrop
+        
+            navbarButton.addEventListener('click', () => {
+                if (navbarBottomElement.classList.contains('show')) {
+                    navbarOffcanvas.hide();
+                } else {
+                    // Set the margin-top style property of the offcanvas to match the navbar's height each time the button is clicked
+                    navbarBottomElement.style.marginTop = `${navbarElement.offsetHeight}px`;
+                    navbarOffcanvas.show();
+                }
+            });
+        </script>
+
+        <!-- Versions menu -->
+        <script>
+            const menuButton = document.querySelector('#menu-btn');
+            const offcanvasElement = document.querySelector('#offcanvasExample');
+            const navbarElement = document.querySelector('.navbar');
+
+        
+            let bsOffcanvas = new bootstrap.Offcanvas(offcanvasElement, { backdrop: false });  // Disable backdrop
+        
+            menuButton.addEventListener('click', () => {
+                if (offcanvasElement.classList.contains('show')) {
+                    bsOffcanvas.hide();
+                } else {
+                    // Set the margin-top style property of the offcanvas to match the navbar's height each time the button is clicked
+                    offcanvasElement.style.marginTop = `${navbarElement.offsetHeight}px`;
+                    bsOffcanvas.show();
+                }
+            });
+        
+            // Adjust the height of the offcanvas when the window is resized
+            window.addEventListener('resize', () => {
+                offcanvasElement.style.marginTop = `${navbarElement.offsetHeight}px`;
+            });
+
+            $(document).ready(function(){
+                // Hide all sublists initially
+                $('.sublist').hide();
+            
+                // Toggle visibility when the parent list item is clicked
+                $('.toggle-sublist').click(function(event){
+                    event.preventDefault();
+                    $(this).next('.sublist').slideToggle('fast');
+                });
+            });
+
+            $('.toggle-sublist').click(function(event) {
+                event.preventDefault();
+                
+                var icon = $(this).find('i');
+                var sublist = $(this).siblings('.sublist');
+
+                if (icon.hasClass('bi-caret-right-fill')) {
+                    icon.removeClass('bi-caret-right-fill');
+                    icon.addClass('bi-caret-down-fill');
+                    //sublist.slideDown();
+                } else {
+                    icon.removeClass('bi-caret-down-fill');
+                    icon.addClass('bi-caret-right-fill');
+                    //sublist.slideUp();
+                }
+            });
+
+
+            // Select all the version links
+            let versionLinks = document.querySelectorAll('.sublist .nav-link');
+
+            // Add an event listener to each link
+            versionLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    // Prevent the default action
+                    e.preventDefault();
+                    
+                    // Get the version from the text of the link
+                    let version = this.textContent.trim();
+                    bsOffcanvas.hide();
+
+                    // Store the version in Cookie
+                    setCookie('version', version, 10000);
+
+                    location.reload();
+                    
+                });
+            });
+            window.onload = function() {
+                var version = getCookie('version');
+                if (version == '') {
+                    version = '1.20.1';
+                }
+                var versionItems = document.getElementsByClassName('version-item');
+
+                var versionParts = version.split('.');
+                var versionToMatch = versionParts.slice(0, 2).join('.');
+                var toggleSublistElements = document.getElementsByClassName('toggle-sublist');
+
+
+                for (var i = 0; i < toggleSublistElements.length; i++) {
+                    var elem = toggleSublistElements[i];
+
+                    if (elem.textContent.trim() == versionToMatch) {
+                        elem.classList.add('version-selected');
+                    } else {
+                        elem.classList.remove('version-selected');
+                    }
+                }
+
+                for (var i = 0; i < versionItems.length; i++) {
+                    var item = versionItems[i];
+
+                    if (item.textContent == version) {
+                        item.classList.add('version-selected');
+                    } else {
+                        item.classList.remove('version-selected');
+                    }
+                }
+            }
+        </script>
+
+        <!-- Redirects -->
+        <script>
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i=0;i<vars.length;i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                    return pair[1];
+                    }
+                } 
+                return '';
+            }
+            
+            document.addEventListener('DOMContentLoaded', (event) => {
+                let currentPage = window.location.href.split('pl')[1];
+                // currentPage = currentPage[currentPage.length - 1];
+                
+                // Check if redirect exists in url
+                var currentRedirect = getQueryVariable("redirect");
+                if (currentRedirect != '') {
+                    redirect = currentRedirect;
+                } else {
+                    redirect = currentPage
+                }
+
+                // Encode URL to be safely used
+                let encodedCurrentPage = encodeURIComponent(redirect);
+                
+                // Only update if not in bannedRedirects
+                let bannedRedirects = ['', 'login', 'register', 'logout'];
+                if($.inArray(encodedCurrentPage, bannedRedirects) == -1) {
+                    // Update login link with redirect page
+                    let loginLinks = document.getElementsByClassName('login_button');
+                    for (let i = 0; i < loginLinks.length; i++) {
+                        loginLinks[i].setAttribute('href', '/login?redirect=' + encodedCurrentPage);
+                    }
+
+                    // Update logout link with redirect page
+                    let logoutLinks = document.getElementsByClassName('logout_button');
+                    for (let i = 0; i < logoutLinks.length; i++) {
+                        logoutLinks[i].setAttribute('href', '/logout?redirect=' + encodedCurrentPage);
+                    }
+
+                    // Update register link with redirect page
+                    let registerLinks = document.getElementsByClassName('register_button');
+                    for (let i = 0; i < registerLinks.length; i++) {
+                        registerLinks[i].setAttribute('href', '/register?redirect=' + encodedCurrentPage);
+                    }
+                }
+            });
+        </script>
+        
+        
+    </body>
+</html>

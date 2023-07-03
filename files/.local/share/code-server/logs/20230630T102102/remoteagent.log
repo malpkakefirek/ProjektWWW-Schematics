@@ -1,0 +1,9 @@
+[2023-06-30 10:21:02.208] [remoteagent] [info] Extension host agent started.
+[2023-06-30 10:21:02.326] [remoteagent] [info] [10.130.16.234][90e84e65][ManagementConnection] New connection established.
+[2023-06-30 10:21:02.862] [remoteagent] [info] [10.130.16.234][f2c83bb7][ExtensionHostConnection] New connection established.
+[2023-06-30 10:21:02.872] [remoteagent] [info] [10.130.16.234][f2c83bb7][ExtensionHostConnection] <95503> Launched Extension Host Process.
+[2023-06-30 11:43:02.851] [remoteagent] [info] [10.130.16.234][90e84e65][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+[2023-06-30 11:45:20.145] [remoteagent] [info] [10.130.16.234][90e84e65][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+[2023-06-30 11:45:20.145] [remoteagent] [info] [10.130.16.234][90e84e65][ManagementConnection] The client has reconnected.
+[2023-06-30 11:45:20.147] [remoteagent] [info] [10.130.16.234][f2c83bb7][ExtensionHostConnection] The client has reconnected.
+[2023-06-30 11:45:32.283] [remoteagent] [info] [10.130.16.234][90e84e65][ManagementConnection] The client has reconnected.

@@ -1,0 +1,461 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .aspect-16x9 {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ration */
+        height: 0;
+    }
+    .aspect-16x9 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .upload-link{
+        color: #fff !important;
+        text-decoration: none !important;
+    }
+    /* STAR RATINGS HERE */
+    .ratings-wrapper{
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+    .ratings{
+        display:flex;
+        flex-direction: row-reverse;
+    }
+    .ratings span{
+        cursor: pointer;
+        transition: color .2s, transform .2s;
+        font-size: 30px;
+    }
+    .ratings span:hover{
+        color: var(--green-vanilla-01);
+        transform: scale(1.1);
+    }
+    .ratings span:hover ~ span{
+        color: var(--green-vanilla-01);
+    }
+    .ratings span[data-color-selected="orange"]{
+        color: orange;
+    }
+    .ratings span[data-color-selected="orange"] ~ span{
+        color: orange;
+    }
+    .ratings span[data-color-selected="blue"]{
+        color: var(--green-vanilla-01);
+    }
+    .ratings span[data-color-selected="blue"] ~ span{
+        color: var(--green-vanilla-01);
+    }
+    .custom-card-header {
+        display: flex; 
+        justify-content: space-between; 
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0; 
+        padding: 0.5rem;
+        margin-bottom: 0;
+        background-color: #444;
+        border-bottom: 1px solid rgba(0,0,0,.125);
+        padding-bottom: 0px;
+    }
+    .custom-description {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top:8px;
+        margin-bottom:4px;
+    }
+    .custom-card-title {
+        margin-bottom: 0px;
+        font-size: 32px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .game-version {
+        font-size: 12px;
+        color: #b7b8bc;
+    }
+    .upload-area {
+        width: 100%;
+        height: 60px;
+        border: 2px dashed #ccc;
+        line-height: 60px;
+        text-align: center;
+        cursor: pointer;
+        color: #ccc;
+    }
+
+    .upload-area:hover {
+        background-color: #f2f2f2;
+    }
+    .upload-area.highlight {
+        background-color: #f2f2f2;
+    }
+    .bg-custom {
+        background-color: rgb(59, 133, 38);
+    }
+    .custom-select {
+        appearance: none;
+        outline: 0;
+        box-shadow: none;
+        border: 1px solid rgba(34,36,38,.15);
+        background: rgb(59, 133, 38);
+        border-radius: 5px;
+        width: 60px;
+        height: 30px;
+        text-align:center;
+    }
+    .modal-body {
+        border-radius: unset;
+        padding: 0 4px;
+    }
+    .modal-field {
+        margin-top: 8px !important;
+        margin-bottom: 0 !important;
+    }
+    .modal-footer {
+        padding: 4px;
+    }
+    .mod-description {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+    .custom-card-left, .custom-card-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    @media (min-width: 992px) {
+        .card-body {
+            flex-direction: row !important;
+        }
+        .custom-card-right {
+            width: 30% !important;
+        }
+    }
+</style>
+
+<div class="container"> 
+    <div class="row" style="justify-content: center;">
+        <div class="col-lg-4 col-md-6 col-sm-12" style="width: 100%; height: 100%; margin-top: 4rem;">
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    
+                    <div class="custom-card-left">
+                        <div class="top">
+                            <h4 class="custom-card-title" style="justify-content: space-between;">
+                                <div class="custom-card-title">
+                                    <a href="/resourcepacks" style="text-decoration: none; color: inherit; width: fit-content; margin-right: 1rem; font-size:initial;">
+                                        <button id="btn-download" class="mc-button__primary mc-button__badger--green mc-get-button btn-download" style="margin-right: 1%;margin-left: 1%;">
+                                            <span class="mc-button__text mc-button__header">
+                                                <i class="fa fa-arrow-left"></i>
+                                            </span>
+                                        </button>
+                                    </a>
+                                    <div>
+                                        <div class="user-text" style="word-wrap:break-word; color:var(--green-vanilla-03)">
+                                            <a href="{{ link  | e }}" style="word-wrap:break-word; color:var(--green-vanilla-03); text-decoration: none; max-width: 26rem;">{{ name | e }}</a>
+                                        </div>
+                                        <div class="user-text game-version">GAME VERSIONS: 1.{{ version_start  | e }} - 1.{{ version_end  | e }}</div>
+                                    </div>
+                                </div>
+                                <div class="ratings-wrapper">
+                                    <div data-productid="{{ id  | e }}" class="ratings" style="font-size: 25px;">
+                                        {% set color_rating = user_rating is defined and user_rating is not null ? "blue" : "orange" %}
+                                        {% set star_rating = color_rating == "blue" ? user_rating : (avg_rating | round) %}
+        
+                                        {% if avg_rating is not null %}
+                                            {% for i in range(5, 1, -1) %}
+                                                <span data-rating="{{ i }}" data-color-selected="{% if i == star_rating %}{{color_rating}}{% else %}gray{% endif %}">&#9733</span>
+                                            {% endfor %}
+                                        {% else %}
+                                            {% for i in range(5, 1, -1) %}
+                                                <span data-rating="{{ i }}" data-color-selected="gray">&#9733</span>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="average-rating" style="font-size: 16px; white-space: nowrap;">
+                                        AVG RATING: {{ avg_rating | number_format(2, '.', ',') }}
+                                    </div>
+                                </div>
+                            </h4>
+                            <hr></hr>
+                            <div class="mod-description" style="max-width: 40rem;">
+                                <h5 class="card-title d-flex" style="color:var(--green-vanilla-03)">DESCRIPTION</h6>
+                                <h6 class="card-title d-flex">{{ description  | e }}</h6>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <hr></hr>
+                            <div class="custom-description">
+                                <h6 class="card-title d-flex"><span style="color:var(--green-vanilla-03)">UPLOADED</span>&nbspON {{ date_added  | e }}</h6>
+                            </div>
+                            <div class="custom-description">
+                                <h6 class="card-title d-flex">
+                                    <div class="user-text">BY</div>
+                                    <div class="user-text username">{{ username  | e }}</div>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="custom-card-right" style="width: 100%;">
+                        <div class="aspect-16x9">
+                            <img src="{{ image_path | default('/assets/no_image.png') | e }}" class="img-fluid card-img-top" alt="{{ schematic.name | e }}" title="{{ schematic.description | e }}"> 
+                        </div>
+                        <hr></hr>
+                        <div class="bottom">
+                            <div class="download-area">
+                                <a href="/{{ file_path | e }}" download style="text-decoration: none;color: inherit;">
+                                    <button id="btn-download" class="mc-button__primary mc-button__badger--green mc-get-button btn-download" style="margin-right: 1%;margin-left: 1%; width: 100%;">
+                                        <span class="mc-button__text mc-button__header">
+                                            DOWNLOAD
+                                        </span>
+                                    </button>
+                                </a>
+                                <div class="custom-description" style="margin-left: 10px;">
+                                    <h6 class="card-title d-flex">
+                                        <div class="user-text game-version" id="file_size"></div>
+                                    </h6>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="mod-url">
+                                <a href="{{ link  | e }}" style="text-decoration: none;color: inherit;">
+                                    <button id="btn-view3d-{{ id | e }}" class="mc-button__primary mc-button__badger--green mc-get-button" data-mod-id="{{ id | e }}" style="margin-right: 1%;margin-left: 1%; width: 100%;">
+                                        <span class="mc-button__text mc-button__header" data-toggle="modal" data-target="#modal3d">
+                                            TAKE ME TO RESOURCEPACK PAGE
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PLEASE LOG IN TO RATE MODAL-->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">PLEASE LOG IN TO RATE RESOURCEPACKS!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <a href="/login?redirect=resourcepacks" class="btn btn-secondary" style="color: white; background-color: var(--green-vanilla-01); text-decoration: none;">Log In</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let file_size_element = document.querySelector("#file_size");
+    let file_path = "{{ file_path }}".split('/');
+    let file_name = file_path[file_path.length-1];
+    
+    if (parseFloat("{{ file_size_mb }}") >= 1) {
+        file_size_element.textContent = file_name + " - {{ file_size_mb }} MB";
+    } else if (parseFloat("{{ file_size_kb }}") >= 1) {
+        file_size_element.textContent = file_name + " - {{ file_size_kb }} KB";
+    } else {
+        file_size_element.textContent = file_name + " - {{ file_size }} B";
+    }
+</script>
+
+<!-- Star ratings -->
+<script>
+    let stars = document.querySelectorAll(".ratings span");
+    let products = document.querySelectorAll(".ratings");
+    let ratings = [];
+    var user_rating = "{{ user_rating }}";
+    var avg_rating = "{{ avg_rating }}";
+
+    for(let star of stars){
+        star.addEventListener("click", function(){
+            let rating = this.dataset.rating;
+            let productId = this.parentElement.dataset.productid;
+
+            let data = {
+                "stars": rating,
+                "product-id": productId,
+                "user-id": "{{ _session.id }}",
+            }
+            if(data["user-id"]){
+                //var resultsDataDiv = document.getElementById("results-data");
+                //var results = JSON.parse(resultsDataDiv.getAttribute("data-results"));
+                var iscontinue=true;
+                // Delete rating when clicked on the same star
+                if(data["stars"] == user_rating){
+                    let data_delete = {
+                        "delete": true,
+                        "product-id": productId,
+                        "user-id": "{{ _session.id }}",
+                    }
+                    const XHR = new XMLHttpRequest();
+
+                    XHR.open('POST', '/resourcepacks', true);
+                    XHR.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    XHR.onreadystatechange = function () {
+                        if (this.readyState === 4 || this.status === 200) {
+                            console.log(this.responseText); // echo from php
+                        }
+                    };
+
+                    // When everything is sent, reload the page to redraw changes
+                    XHR.addEventListener('load', function(event) {
+                        location.reload();
+                    });
+
+                    XHR.send(JSON.stringify(data_delete));
+                    iscontinue=false;
+                }
+                if(iscontinue){
+                    // Send your ratings to form
+                    const XHR = new XMLHttpRequest();
+
+                    XHR.open('POST', '/resourcepacks', true);
+                    XHR.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    XHR.onreadystatechange = function () {
+                        if (this.readyState === 4 || this.status === 200) {
+                            console.log(this.responseText); // echo from php
+                        }
+                    };
+
+                    // When everything is sent, reload the page to redraw changes
+                    XHR.addEventListener('load', function(event) {
+                        location.reload();
+                    });
+
+                    XHR.send(JSON.stringify(data));
+                }
+            } else {
+                // Login to rate modal
+                var myModal = new bootstrap.Modal(document.getElementById('myModal'), {});
+                myModal.show();
+            }
+        });
+    }
+</script>
+
+<!-- Upload files -->
+<script>
+    var button = document.getElementsByClassName('button-to-listen')[0];
+    button.addEventListener('click', buttonClickHandler);
+
+    function buttonClickHandler() {
+        let data = {
+            "user-id": "{{ _session.id }}",
+        }
+        if(data['user-id']){
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {});
+            myModal.show();
+        } else {
+            var myModal = new bootstrap.Modal(document.getElementById('myModalUpload'), {});
+            myModal.show();
+        }
+    }
+
+    document.querySelectorAll('.upload-area').forEach(uploadArea => {
+        let inputFile = uploadArea.querySelector('input[type="file"]');
+        let span = uploadArea.querySelector('span');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.add('highlight'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('highlight'), false);
+        });
+
+        uploadArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+            
+            handleFiles(files);
+            let fileNames = Array.from(inputFile.files).map(file => file.name);
+            span.innerText = fileNames.join(', ') || 'Drag and drop file here or click to select file';
+        }
+
+        function handleFiles(files) {
+            inputFile.files = files;
+        }
+
+        uploadArea.addEventListener('click', () => {
+            inputFile.click();
+        });
+
+        inputFile.addEventListener('change', () => {
+            let fileNames = Array.from(inputFile.files).map(file => file.name);
+            span.innerText = fileNames.join(', ') || 'Drag and drop file here or click to select file';
+        });
+    });
+</script>
+
+<!-- Color current page in navbar -->
+<script>
+var elements = document.querySelectorAll(".subpages");
+for (let element of elements) {
+    if (element.textContent.toLowerCase() == "{{ page }}") {
+        element.className = element.className + " current-page";
+    }
+}
+
+
+$(document).ready(function(){
+    var versions = "{{ versions|json_encode }}";
+    var startIndex = $('#version_start');
+    var endIndex = $('#version_end');
+
+    function restrictVersions(minElem, maxElem) {
+        var selectedVersion = parseFloat(maxElem.val());
+        var options = minElem.children('option').each(function () {
+            var optionVersion = parseFloat($(this).val());
+            if (optionVersion <= selectedVersion) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    }
+
+    // When version start changes, restrict options in version end
+    startIndex.change(function() {
+        restrictVersions(endIndex, startIndex);
+    });
+
+    // When version end changes, restrict options in version start
+    endIndex.change(function() {
+        restrictVersions(startIndex, endIndex);
+    });
+});
+</script>
+
+{% endblock %}
